@@ -1,0 +1,43 @@
+﻿@page "{searchString?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Book List</h1>
+</div>
+<form>
+    <p>
+        <select asp-for="BookLanguage" asp-items="Model.Language">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Country</th>
+        <th>Link</th>
+        <th>Pages</th>
+        <th>Year</th>
+        <th>Language</th>
+        <th>Image Link</th>
+    </tr>
+    @foreach(var book in Model.FilteredBooks)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Country</td>
+            <td>@book.Link</td>
+            <td>@book.Pages</td>
+            <td>@book.Year</td>
+            <td>@book.Language</td>
+            <td>@book.Imagelink</td>
+        </tr>
+    }
+</table>
